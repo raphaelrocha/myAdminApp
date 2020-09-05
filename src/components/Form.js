@@ -26,7 +26,7 @@ class Form extends Component  {
         let { counter } = this.state;
         counter = counter + 1;
         axios.get('/',config).then( res => {
-            console.log(">>>>asquiii.", counter);
+            console.log("contou", counter);
             this.setState({fromServer: 'EU!!!',counter})
         });
     }
