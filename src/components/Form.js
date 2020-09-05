@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import * as axios from "axios";
+import Request from '../lib/request';
+
+const request = new Request();
 
 const config = {
     headers: {
@@ -25,10 +28,13 @@ class Form extends Component  {
     getFormServer = () => {
         let { counter } = this.state;
         counter = counter + 1;
-        axios.get('/',config).then( res => {
-            console.log("contou", counter);
-            this.setState({fromServer: 'EU!!!',counter})
-        });
+        // axios.get('/',config).then( res => {
+        //     console.log("contou", counter);
+        //     this.setState({fromServer: 'EU!!!',counter})
+        // });
+
+        request.changeStep();
+        console.log(request);
     }
 
     render(){

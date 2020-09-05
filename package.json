@@ -2,7 +2,7 @@
   "name": "simple-app-react",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://www.google.com.br",
+  "proxy": "https://devneo2.herokuapp.com",
   "engines": {
     "node": "10.16.x",
     "npm": "6.x"
