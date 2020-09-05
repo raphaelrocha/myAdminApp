@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import * as axios from "axios";
 
 const config = {
@@ -8,18 +8,45 @@ const config = {
     }
 };
 
-const Form = (props) => {
-    const { documentId }= props.match.params;
-    console.log(props.match.params);
+class Form extends Component  {
 
-    axios.get('/',config).then( res => console.log(">>>>asquiii.",res));
-    return (
-        <div>
-            <h1>Aqui será o formulário</h1>
-            {documentId}
-            <p>About US page body content</p>
-        </div>
-    );
+    state = {
+        counter: 0,
+        documentId: '',
+        fromServer: 'Ainda não bateu no servidor'
+    };
+
+    componentDidMount() {
+        const { documentId }= this.props.match.params;
+        this.setState({documentId});
+        this.getFormServer()
+    }
+
+    getFormServer = () => {
+        let { counter } = this.state;
+        counter = counter + 1;
+        axios.get('/',config).then( res => {
+            console.log(">>>>asquiii.", counter);
+            this.setState({fromServer: 'EU!!!',counter})
+        });
+    }
+
+    render(){
+        const { documentId, fromServer, counter }= this.state;
+
+        return (
+            <div>
+                <h1>Aqui será o formulário</h1>
+                {documentId}
+                <br/>
+                {fromServer}
+                <br/>
+                contador {counter}
+                <p>About US page body content</p>
+            </div>
+        );
+    }
+
 }
 
 export default Form;
