@@ -1,17 +1,22 @@
 import * as axios from "axios";
 
+const config = {
+    headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+    }
+};
+
 const Service = class Service{
     request = async ({
                          url,
                          method,
                          body: data = {},
                          query: params = {},
-                         urlPagination,
-                         headers = {},
+                         headers = config.headers,
                      }) => {
         const options = {
             headers: {
-                ...this.requestHeaders,
                 Authorization: "",
                 ...headers,
             },
@@ -19,7 +24,6 @@ const Service = class Service{
             method,
             params,
             url,
-            // baseURL: this.baseURL,
         };
 
         console.log('oiiii',options);

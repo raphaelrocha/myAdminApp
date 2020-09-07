@@ -18,7 +18,8 @@ class App extends Component {
               <Route path="/" component={Home} exact/>
               <Route path="/about" component={About}/>
               <Route path="/contact" component={Contact}/>
-                <Route path="/form/:documentId" component={Form}/>
+                {/*<Route path="/form/:documentId" component={Form}/>*/}
+                <Route path="/form" component={Form}/>
               <Route component={Error}/>
             </Switch>
           </div>
